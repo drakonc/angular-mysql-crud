@@ -1,6 +1,6 @@
 import  { Router } from 'express';
 
-export class IndexRoutes{
+class IndexRoutes{
     
     public router: Router = Router();
 
