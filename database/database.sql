@@ -12,4 +12,4 @@ CREATE TABLE game (
 
 RENAME TABLE game to games;
 
-DESCRIBE game;
+DESCRIBE games;
