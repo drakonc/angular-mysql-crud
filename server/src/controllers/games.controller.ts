@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 import pool from "../database";
 
 class GamesController {
-  public async list(req: Request, res: Response) {
+  public async list(req: Request, res: Response): Promise<void> {
     const result = await pool.query("SELECT * FROM games");
-    res.json({ result });
+    res.status(200).json({ result });
   }
 
-  public async getOne(req: Request, res: Response) {
+  public async getOne(req: Request, res: Response): Promise<any> {
     const { id } = req.params;
     const result = await pool.query("SELECT * FROM games WHERE id = ?", [id]);
     if (result.length > 0) {
@@ -16,7 +16,7 @@ class GamesController {
     res.status(404).json({ result: "Error al Buscar el Juego " + result.title });
   }
 
-  public async create(req: Request, res: Response) {
+  public async create(req: Request, res: Response): Promise<void> {
     const { title, description, image } = req.body;
     const result = await pool.query("INSERT INTO games SET ?", [{ title, description, image }]);
     if (result.serverStatus === 2) {
@@ -26,7 +26,7 @@ class GamesController {
     }
   }
 
-  public async updated(req: Request, res: Response) {
+  public async updated(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
     const { title, description, image } = req.body;
     const result = await pool.query("UPDATE games set ? WHERE id = ?", [{ title, description, image }, id]);
@@ -37,7 +37,7 @@ class GamesController {
     }
   }
 
-  public async delete(req: Request, res: Response) {
+  public async delete(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
     const resul = await pool.query("SELECT * FROM games WHERE id = ?", [id]);
     if (resul.length > 0) {
