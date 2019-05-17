@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { gamesController } from "../controllers/gamesController";
+import { gamesController } from "../controllers/games.controller";
 
 export class GameRoutes {
   public router: Router = Router();
