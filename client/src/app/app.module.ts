@@ -13,7 +13,7 @@ import { GamesService } from "./services/games.service";
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent, GameFormComponent, GameListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,FormsModule],
   providers: [GamesService],
   bootstrap: [AppComponent]
 })
